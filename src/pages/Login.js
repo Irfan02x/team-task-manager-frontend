@@ -1,6 +1,6 @@
 import { useState } from "react";
-import API from "../api/axios";
 import { Link, useNavigate } from "react-router-dom";
+import API from "../api/axios";
 
 function Login() {
   const navigate = useNavigate();
@@ -14,21 +14,15 @@ function Login() {
     e.preventDefault();
 
     try {
-      const res = await API.post(
-        "/auth/login",
-        data
-      );
+      const res = await API.post("/auth/login", data);
 
-      // ✅ store both
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", JSON.stringify(res.data.user));
 
-      console.log("LOGIN SUCCESS:", res.data);
-
-      navigate("/dashboard");   // ✅ correct navigation
+      navigate("/dashboard");
 
     } catch (err) {
-      console.log(err);
+      console.log(err.response?.data || err.message);
       alert(err.response?.data?.message || "Login failed");
     }
   };
@@ -40,22 +34,18 @@ function Login() {
       <form onSubmit={handleSubmit}>
         <input
           placeholder="Email"
-          autoComplete="username"
           onChange={(e) =>
             setData({ ...data, email: e.target.value })
           }
-        />
-        <br /><br />
+        /><br /><br />
 
         <input
           type="password"
           placeholder="Password"
-          autoComplete="current-password"
           onChange={(e) =>
             setData({ ...data, password: e.target.value })
           }
-        />
-        <br /><br />
+        /><br /><br />
 
         <button>Login</button>
       </form>
