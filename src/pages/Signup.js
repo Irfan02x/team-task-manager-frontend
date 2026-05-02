@@ -9,7 +9,7 @@ function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post("http://localhost:5000/api/auth/signup", data);
+    await axios.post("/auth/signup", data);
     alert("Signup successful");
   };
 
