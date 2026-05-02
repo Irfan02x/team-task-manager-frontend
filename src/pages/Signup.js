@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import API from "../api/axios";
 
 function Signup() {
   const [data, setData] = useState({
@@ -9,7 +9,7 @@ function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post("/auth/signup", data);
+    await API.post("/auth/signup", data);
     alert("Signup successful");
   };
 
