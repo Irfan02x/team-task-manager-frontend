@@ -20,9 +20,11 @@ export default function Dashboard() {
   const user = JSON.parse(localStorage.getItem("user") || "null");
 
   // 🔐 protect route
-  useEffect(() => {
-    if (!user) navigate("/");
-  }, [navigate]);
+useEffect(() => {
+  if (!user) {
+    navigate("/");
+  }
+}, [user, navigate]);
 
   // 📊 load data
   useEffect(() => {
