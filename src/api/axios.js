@@ -2,8 +2,7 @@ import axios from "axios";
 
 // 🔹 create instance
 const API = axios.create({
-  baseURL: "https://team-task-manager-backend-production-434d.up.railway.app/api",
-  withCredentials: true
+  baseURL: "https://team-task-manager-backend-production-434d.up.railway.app/api"
 });
 
 // 🔹 REQUEST INTERCEPTOR (attach token)
